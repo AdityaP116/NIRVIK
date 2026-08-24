@@ -1,0 +1,43 @@
+import { WomenSafetyInsight } from '../types';
+
+export const mockWomenSafetyInsights: WomenSafetyInsight[] = [
+  {
+    id: 'ws-01',
+    title: 'Repeat-Offender Pattern',
+    type: 'repeat_offender',
+    confidence: 87,
+    linkedCasesCount: 3,
+    sharedEntitiesCount: 5,
+    escalationRecommended: false,
+    priority: 'HIGH PRIORITY',
+    keyIdentifiers: ['Entity_A7', 'Entity_B3', 'Vehicle_MH14_992', 'Tower_Sec4'],
+    anonymizedVictimContext: 'Victim identities redacted under Criminal Justice Act Section 228A. Co-location of suspect burner devices with transit hubs identified.',
+    patternDescription: 'Pattern analysis identified repeated targeting along suburban transit corridors during evening hours. Suspect device IMEI cross-referenced across 3 open FIRs.',
+  },
+  {
+    id: 'ws-02',
+    title: 'Trafficking Network Signal',
+    type: 'trafficking_network',
+    confidence: 94,
+    linkedCasesCount: 4,
+    sharedEntitiesCount: 11,
+    escalationRecommended: true,
+    priority: 'CRITICAL',
+    keyIdentifiers: ['Intermediary_Node_K9', 'Shell_Logistics_Agency', 'Trans_Account_442', 'Shared_Vehicle_SUV'],
+    anonymizedVictimContext: 'Strict privacy shielding active. All demographic records aggregated to regional statistical level.',
+    patternDescription: 'AI linkage detected a cross-district recruitment agency funneling undocumented logistics personnel through intermediate transit lodgings.',
+  },
+  {
+    id: 'ws-03',
+    title: 'Transit Corridor Anomaly Cluster',
+    type: 'location_hotspot',
+    confidence: 82,
+    linkedCasesCount: 2,
+    sharedEntitiesCount: 4,
+    escalationRecommended: false,
+    priority: 'MONITORING',
+    keyIdentifiers: ['Hub_Sector7_Railway', 'SIM_Pool_Cluster_Delta', 'Auto_Permit_883'],
+    anonymizedVictimContext: 'Automated geospatial telemetry with strict individual privacy masking.',
+    patternDescription: 'Unregistered local transport fleet operating clustered nighttime pickups near industrial sector boundaries.',
+  },
+];

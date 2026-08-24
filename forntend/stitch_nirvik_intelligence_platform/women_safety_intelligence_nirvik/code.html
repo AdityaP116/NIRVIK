@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NIRVIK - Women Safety Intelligence</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#10232f",
+                        "secondary-fixed-dim": "#ffb787",
+                        "inverse-surface": "#2c3132",
+                        "on-tertiary-fixed": "#131d22",
+                        "outline-variant": "#c3c7cc",
+                        "on-secondary-container": "#6d3300",
+                        "tertiary": "#182227",
+                        "on-secondary-fixed": "#311300",
+                        "on-tertiary-fixed-variant": "#3e484e",
+                        "tertiary-fixed": "#dae4eb",
+                        "on-background": "#171d1d",
+                        "secondary-fixed": "#ffdcc7",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#374956",
+                        "on-tertiary-container": "#96a0a7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#723600",
+                        "inverse-primary": "#b6c9d9",
+                        "on-primary-fixed": "#0a1d2a",
+                        "primary-fixed": "#d2e5f6",
+                        "on-primary-container": "#8ea1b1",
+                        "surface-dim": "#d6dbdb",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#b6c9d9",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f0f5f4",
+                        "on-surface": "#171d1d",
+                        "inverse-on-surface": "#edf2f2",
+                        "background": "#f5fafa",
+                        "secondary-container": "#fd974e",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f5fafa",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eaefef",
+                        "surface": "#f5fafa",
+                        "outline": "#73777c",
+                        "surface-container-high": "#e4e9e9",
+                        "tertiary-container": "#2e373d",
+                        "surface-container-highest": "#dee3e3",
+                        "tertiary-fixed-dim": "#bec8cf",
+                        "primary-container": "#263845",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#43474b",
+                        "surface-variant": "#dee3e3",
+                        "secondary": "#964900",
+                        "surface-tint": "#4e616f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-tight": "8px",
+                        "stack-md": "12px",
+                        "gutter": "16px",
+                        "panel-padding": "16px",
+                        "margin-page": "24px",
+                        "sidebar-width": "240px"
+                    },
+                    "fontFamily": {
+                        "section-heading": ["Inter", "sans-serif"],
+                        "page-title": ["Inter", "sans-serif"],
+                        "metadata": ["Inter", "sans-serif"],
+                        "label-caps": ["Inter", "sans-serif"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "section-heading": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "page-title": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "metadata": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Grid pattern background for nodes area */
+        .bg-grid-pattern {
+            background-size: 20px 20px;
+            background-image: linear-gradient(to right, #dee3e3 1px, transparent 1px), linear-gradient(to bottom, #dee3e3 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Shared Component: SideNavBar -->
+<nav class="w-sidebar-width h-screen fixed left-0 top-0 bg-primary dark:bg-primary z-50 flex flex-col py-panel-padding shadow-none border-r border-tertiary-container/30">
+<!-- Brand Header -->
+<div class="px-panel-padding mb-8 flex flex-col">
+<h1 class="font-page-title text-page-title text-on-primary">NIRVIK</h1>
+<p class="font-metadata text-metadata text-on-primary/70 mt-1">AI-Powered Criminal Network Intelligence</p>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto flex flex-col gap-1 px-2">
+<!-- Tab 1 -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-primary/70 hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<!-- Tab 2 -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-primary/70 hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">folder_shared</span>
+<span class="font-body-md text-body-md">Investigations</span>
+</a>
+<!-- Tab 3: Active State mapping based on prompt context (Pattern analysis across authorized investigations) -->
+<a class="flex items-center gap-3 px-4 py-3 border-l-4 border-secondary-container bg-white/10 text-on-primary font-bold transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px] icon-fill text-secondary-container">hub</span>
+<span class="font-body-md text-body-md">Network Analysis</span>
+</a>
+<!-- Tab 4 -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-primary/70 hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">search_insights</span>
+<span class="font-body-md text-body-md">Intelligence Search</span>
+</a>
+<!-- Tab 5 -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-primary/70 hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">notifications_active</span>
+<span class="font-body-md text-body-md">Alerts</span>
+</a>
+<!-- Tab 6 -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-primary/70 hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">work</span>
+<span class="font-body-md text-body-md">Cases</span>
+</a>
+<!-- Tab 7 -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-primary/70 hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">database</span>
+<span class="font-body-md text-body-md">Data Sources</span>
+</a>
+<!-- Tab 8 -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-primary/70 hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">description</span>
+<span class="font-body-md text-body-md">Reports</span>
+</a>
+<!-- Tab 9 -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-primary/70 hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span class="font-body-md text-body-md">Audit Trail</span>
+</a>
+</div>
+<!-- Footer Profile -->
+<div class="mt-auto px-4 pt-4 border-t border-white/10">
+<a class="flex items-center gap-3 px-2 py-2 rounded-DEFAULT text-on-primary/70 hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[24px]">account_circle</span>
+<span class="font-body-md text-body-md">Rajiv Kumar</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 ml-[240px] flex flex-col min-h-screen">
+<!-- Shared Component: TopAppBar -->
+<header class="docked full-width top-0 sticky bg-surface dark:bg-surface-container border-b border-outline-variant z-40">
+<div class="flex justify-between items-center h-16 px-margin-page">
+<!-- Navigation Breadcrumbs / Links -->
+<div class="flex items-center gap-2 text-on-surface-variant">
+<a class="font-body-md text-body-md hover:text-secondary transition-colors duration-150" href="#">Network Analysis</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="font-body-md text-body-md text-primary font-bold" href="#">Women Safety Intelligence</a>
+</div>
+<!-- Right Actions & Search -->
+<div class="flex items-center gap-6">
+<!-- Search Bar placeholder -->
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-surface-container-highest border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Global Entity Search..." type="text"/>
+</div>
+<!-- Trailing Icons -->
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-150 flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-150 flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">verified_user</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-150 flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">security</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<main class="flex-1 p-margin-page flex flex-col gap-gutter max-w-7xl">
+<!-- Header Section -->
+<div class="flex flex-col gap-stack-tight mb-4">
+<div class="flex items-start justify-between">
+<div>
+<h2 class="font-page-title text-page-title text-primary">Women Safety Intelligence</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Pattern analysis across authorized investigations.</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-DEFAULT text-primary font-metadata hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+                            Filter Criteria
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary border border-primary rounded-DEFAULT text-on-primary font-metadata shadow-sm hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-[16px]">download</span>
+                            Export Dossier
+                        </button>
+</div>
+</div>
+<!-- Privacy Note Banner -->
+<div class="mt-4 flex items-center gap-3 bg-surface-container-lowest border-l-4 border-primary p-4 rounded-r-lg border border-y-outline-variant border-r-outline-variant shadow-sm">
+<div class="p-2 bg-primary/10 rounded-full text-primary">
+<span class="material-symbols-outlined text-[20px] icon-fill">shield_person</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium">Privacy Note: Victim identities protected.</p>
+<p class="font-metadata text-metadata text-on-surface-variant mt-0.5">AI findings require investigator verification prior to operational deployment.</p>
+</div>
+</div>
+</div>
+<!-- Intelligence Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-gutter">
+<!-- Card 1: Repeat-Offender Pattern -->
+<div class="flex flex-col bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden group hover:border-primary transition-colors duration-200 shadow-sm relative">
+<!-- Top subtle accent line -->
+<div class="absolute top-0 left-0 w-full h-1 bg-outline-variant group-hover:bg-primary transition-colors"></div>
+<div class="p-panel-padding border-b border-outline-variant flex justify-between items-start bg-surface-bright">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline-variant text-[20px]">psychology</span>
+<h3 class="font-section-heading text-section-heading text-primary">Repeat-Offender Pattern</h3>
+</div>
+<p class="font-metadata text-metadata text-on-surface-variant flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                                Confidence Score: 87%
+                            </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2 py-1 bg-primary text-on-primary rounded-full font-label-caps text-label-caps tracking-widest">AI INSIGHT</span>
+</div>
+</div>
+<div class="p-panel-padding flex-1 flex flex-col gap-stack-md">
+<!-- Stats Row -->
+<div class="flex items-center gap-6 pb-4 border-b border-surface-container-highest">
+<div class="flex flex-col">
+<span class="font-page-title text-page-title text-primary">3</span>
+<span class="font-metadata text-metadata text-on-surface-variant">Linked Investigations</span>
+</div>
+<div class="h-10 w-px bg-surface-container-highest"></div>
+<div class="flex flex-col">
+<span class="font-page-title text-page-title text-primary">5</span>
+<span class="font-metadata text-metadata text-on-surface-variant">Shared Entities</span>
+</div>
+</div>
+<!-- Mini Node Graph Placeholder -->
+<div class="h-32 w-full bg-grid-pattern rounded border border-surface-container-highest relative flex items-center justify-center overflow-hidden my-2">
+<!-- Abstract Nodes using HTML/CSS -->
+<div class="absolute w-full h-full flex items-center justify-center">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 120">
+<line stroke="#c3c7cc" stroke-dasharray="4" stroke-width="1" x1="150" x2="250" y1="60" y2="40"></line>
+<line stroke="#c3c7cc" stroke-dasharray="4" stroke-width="1" x1="150" x2="250" y1="60" y2="80"></line>
+<line stroke="#c3c7cc" stroke-width="1" x1="250" x2="300" y1="40" y2="60"></line>
+<line stroke="#c3c7cc" stroke-width="1" x1="250" x2="300" y1="80" y2="60"></line>
+</svg>
+</div>
+<!-- Central Subject -->
+<div class="absolute z-10 w-8 h-8 rounded-full bg-surface-container-lowest border-2 border-primary flex items-center justify-center transform -translate-x-12 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">person</span>
+</div>
+<!-- Linked Entities -->
+<div class="absolute z-10 w-6 h-6 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center transform translate-x-12 -translate-y-6">
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">phone_iphone</span>
+</div>
+<div class="absolute z-10 w-6 h-6 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center transform translate-x-12 translate-y-6">
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">directions_car</span>
+</div>
+<div class="absolute z-10 w-6 h-6 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center transform translate-x-24">
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">location_on</span>
+</div>
+</div>
+<!-- Entity List -->
+<div class="flex flex-col gap-2 mt-auto">
+<span class="font-metadata text-metadata text-on-surface-variant uppercase tracking-wider">Key Identifiers</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container border border-surface-container-highest rounded text-body-sm font-body-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-outline">fingerprint</span> Entity_A7
+                                </span>
+<span class="px-2 py-1 bg-surface-container border border-surface-container-highest rounded text-body-sm font-body-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-outline">tag</span> Entity_B3
+                                </span>
+<span class="px-2 py-1 bg-surface-container border border-surface-container-highest rounded text-body-sm font-body-sm text-on-surface flex items-center gap-1 text-on-surface-variant">
+                                    +3 more
+                                </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Trafficking Network Signal -->
+<div class="flex flex-col bg-surface-container-lowest border border-secondary-container/50 rounded-lg overflow-hidden group hover:border-secondary-container transition-colors duration-200 shadow-sm relative">
+<!-- Top alert accent line -->
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary-container"></div>
+<div class="p-panel-padding border-b border-outline-variant flex justify-between items-start bg-[#fff8f3]"> <!-- extremely light orange tint to standard surface -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container text-[20px] icon-fill">share</span>
+<h3 class="font-section-heading text-section-heading text-primary">Trafficking Network Signal</h3>
+</div>
+<p class="font-metadata text-metadata text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                                Escalation Recommended
+                            </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2 py-1 bg-secondary-container text-on-secondary-container rounded-full font-label-caps text-label-caps tracking-widest shadow-sm">HIGH PRIORITY</span>
+</div>
+</div>
+<div class="p-panel-padding flex-1 flex flex-col gap-stack-md">
+<!-- Stats Row -->
+<div class="flex items-center gap-6 pb-4 border-b border-surface-container-highest">
+<div class="flex flex-col">
+<span class="font-page-title text-page-title text-primary">4</span>
+<span class="font-metadata text-metadata text-on-surface-variant">Linked Cases</span>
+</div>
+<div class="h-10 w-px bg-surface-container-highest"></div>
+<div class="flex flex-col">
+<span class="font-page-title text-page-title text-secondary-container">11</span>
+<span class="font-metadata text-metadata text-on-surface-variant">Network Entities</span>
+</div>
+</div>
+<!-- Mini Node Graph Placeholder (More complex structure) -->
+<div class="h-32 w-full bg-grid-pattern rounded border border-surface-container-highest relative flex items-center justify-center overflow-hidden my-2">
+<!-- Abstract Nodes -->
+<div class="absolute w-full h-full flex items-center justify-center">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 120">
+<line stroke="#fd974e" stroke-width="2" x1="120" x2="200" y1="60" y2="60"></line>
+<line stroke="#fd974e" stroke-dasharray="4" stroke-width="1" x1="200" x2="260" y1="60" y2="30"></line>
+<line stroke="#fd974e" stroke-dasharray="4" stroke-width="1" x1="200" x2="260" y1="60" y2="90"></line>
+<line stroke="#c3c7cc" stroke-width="1" x1="200" x2="280" y1="60" y2="60"></line>
+</svg>
+</div>
+<!-- Nodes -->
+<div class="absolute z-10 w-10 h-10 rounded-full bg-surface-container-lowest border-2 border-secondary-container shadow-[0_0_12px_rgba(253,151,78,0.3)] flex items-center justify-center transform -translate-x-20">
+<span class="material-symbols-outlined text-[18px] text-secondary-container">hub</span>
+</div>
+<div class="absolute z-10 w-8 h-8 rounded-full bg-primary border-2 border-primary flex items-center justify-center transform">
+<span class="material-symbols-outlined text-[14px] text-on-primary">group</span>
+</div>
+<div class="absolute z-10 w-6 h-6 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center transform translate-x-16 -translate-y-8">
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">account_balance</span>
+</div>
+<div class="absolute z-10 w-6 h-6 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center transform translate-x-16 translate-y-8">
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">flight</span>
+</div>
+<div class="absolute z-10 w-6 h-6 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center transform translate-x-20">
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">map</span>
+</div>
+</div>
+<!-- Entity List -->
+<div class="flex flex-col gap-2 mt-auto">
+<span class="font-metadata text-metadata text-on-surface-variant uppercase tracking-wider">Identified Clusters</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container border border-surface-container-highest rounded text-body-sm font-body-sm text-on-surface flex items-center gap-1 border-l-2 border-l-secondary-container">
+<span class="material-symbols-outlined text-[14px] text-secondary-container">device_hub</span> Network_92
+                                </span>
+<span class="px-2 py-1 bg-surface-container border border-surface-container-highest rounded text-body-sm font-body-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-outline">device_hub</span> Network_45
+                                </span>
+<button class="px-2 py-1 bg-transparent border border-dashed border-outline-variant rounded text-body-sm font-body-sm text-primary hover:bg-surface-container transition-colors flex items-center gap-1">
+                                    View 9 more...
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

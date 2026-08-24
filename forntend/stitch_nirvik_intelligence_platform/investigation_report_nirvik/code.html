@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NIRVIK - Investigation Report</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f5fafa",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#4e616f",
+                        "tertiary": "#182227",
+                        "on-secondary-fixed": "#311300",
+                        "secondary-fixed": "#ffdcc7",
+                        "on-secondary-fixed-variant": "#723600",
+                        "tertiary-fixed": "#dae4eb",
+                        "surface-container-highest": "#dee3e3",
+                        "on-primary-fixed-variant": "#374956",
+                        "tertiary-container": "#2e373d",
+                        "outline-variant": "#c3c7cc",
+                        "on-secondary": "#ffffff",
+                        "outline": "#73777c",
+                        "on-primary-fixed": "#0a1d2a",
+                        "secondary": "#964900",
+                        "primary-fixed-dim": "#b6c9d9",
+                        "secondary-fixed-dim": "#ffb787",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#96a0a7",
+                        "tertiary-fixed-dim": "#bec8cf",
+                        "on-surface": "#171d1d",
+                        "surface-container-low": "#f0f5f4",
+                        "primary-container": "#263845",
+                        "surface-bright": "#f5fafa",
+                        "inverse-primary": "#b6c9d9",
+                        "inverse-surface": "#2c3132",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#d6dbdb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eaefef",
+                        "secondary-container": "#fd974e",
+                        "on-background": "#171d1d",
+                        "on-tertiary-fixed": "#131d22",
+                        "on-surface-variant": "#43474b",
+                        "inverse-on-surface": "#edf2f2",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#8ea1b1",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#d2e5f6",
+                        "primary": "#10232f",
+                        "surface-container-high": "#e4e9e9",
+                        "on-secondary-container": "#6d3300",
+                        "background": "#f5fafa",
+                        "on-tertiary-fixed-variant": "#3e484e",
+                        "surface-variant": "#dee3e3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-page": "24px",
+                        "sidebar-width": "240px",
+                        "stack-tight": "8px",
+                        "panel-padding": "16px",
+                        "stack-md": "12px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "metadata": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "page-title": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "section-heading": ["Inter"],
+                        "body-md": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .font-metadata { font-family: 'Inter', sans-serif; font-size: 11px; line-height: 14px; letter-spacing: 0.02em; font-weight: 500; }
+        .font-body-sm { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 18px; font-weight: 400; }
+        .font-page-title { font-family: 'Inter', sans-serif; font-size: 26px; line-height: 32px; letter-spacing: -0.02em; font-weight: 600; }
+        .font-label-caps { font-family: 'Inter', sans-serif; font-size: 10px; line-height: 12px; letter-spacing: 0.05em; font-weight: 700; }
+        .font-section-heading { font-family: 'Inter', sans-serif; font-size: 18px; line-height: 24px; font-weight: 600; }
+        .font-body-md { font-family: 'Inter', sans-serif; font-size: 14px; line-height: 20px; font-weight: 400; }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface h-full flex overflow-hidden">
+<!-- SideNavBar (JSON Configured) -->
+<nav class="w-sidebar-width h-screen fixed left-0 top-0 bg-primary flex flex-col py-panel-padding transition-all duration-200 z-50">
+<div class="px-margin-page mb-8">
+<h1 class="font-page-title text-on-primary">NIRVIK</h1>
+<p class="font-metadata text-on-primary/70 mt-1">AI-Powered Criminal Network Intelligence</p>
+</div>
+<div class="flex-1 overflow-y-auto">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center px-margin-page py-3 text-on-primary/70 hover:bg-white/5 transition-colors font-body-md group" href="#">
+<span class="material-symbols-outlined mr-3 text-on-primary/70 group-hover:text-on-primary transition-colors">dashboard</span>
+                        Dashboard
+                    </a>
+</li>
+<li>
+<a class="flex items-center px-margin-page py-3 text-on-primary/70 hover:bg-white/5 transition-colors font-body-md group" href="#">
+<span class="material-symbols-outlined mr-3 text-on-primary/70 group-hover:text-on-primary transition-colors">folder_shared</span>
+                        Investigations
+                    </a>
+</li>
+<li>
+<a class="flex items-center px-margin-page py-3 text-on-primary/70 hover:bg-white/5 transition-colors font-body-md group" href="#">
+<span class="material-symbols-outlined mr-3 text-on-primary/70 group-hover:text-on-primary transition-colors">hub</span>
+                        Network Analysis
+                    </a>
+</li>
+<li>
+<a class="flex items-center px-margin-page py-3 text-on-primary/70 hover:bg-white/5 transition-colors font-body-md group" href="#">
+<span class="material-symbols-outlined mr-3 text-on-primary/70 group-hover:text-on-primary transition-colors">search_insights</span>
+                        Intelligence Search
+                    </a>
+</li>
+<li>
+<a class="flex items-center px-margin-page py-3 text-on-primary/70 hover:bg-white/5 transition-colors font-body-md group" href="#">
+<span class="material-symbols-outlined mr-3 text-on-primary/70 group-hover:text-on-primary transition-colors">notifications_active</span>
+                        Alerts
+                    </a>
+</li>
+<li>
+<a class="flex items-center px-margin-page py-3 text-on-primary/70 hover:bg-white/5 transition-colors font-body-md group" href="#">
+<span class="material-symbols-outlined mr-3 text-on-primary/70 group-hover:text-on-primary transition-colors">work</span>
+                        Cases
+                    </a>
+</li>
+<li>
+<a class="flex items-center px-margin-page py-3 text-on-primary/70 hover:bg-white/5 transition-colors font-body-md group" href="#">
+<span class="material-symbols-outlined mr-3 text-on-primary/70 group-hover:text-on-primary transition-colors">database</span>
+                        Data Sources
+                    </a>
+</li>
+<li>
+<a class="flex items-center px-margin-page py-3 border-l-4 border-secondary-container bg-white/10 text-on-primary font-bold transition-colors font-body-md" href="#">
+<span class="material-symbols-outlined mr-3 text-secondary-container" style="font-variation-settings: 'FILL' 1;">description</span>
+                        Reports
+                    </a>
+</li>
+<li>
+<a class="flex items-center px-margin-page py-3 text-on-primary/70 hover:bg-white/5 transition-colors font-body-md group" href="#">
+<span class="material-symbols-outlined mr-3 text-on-primary/70 group-hover:text-on-primary transition-colors">history</span>
+                        Audit Trail
+                    </a>
+</li>
+</ul>
+</div>
+<div class="mt-auto pt-4 border-t border-white/10">
+<a class="flex items-center px-margin-page py-3 text-on-primary/70 hover:bg-white/10 transition-colors font-body-md" href="#">
+<span class="material-symbols-outlined mr-3">account_circle</span>
+                Rajiv Kumar
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-sidebar-width flex flex-col h-full bg-surface">
+<!-- TopAppBar (JSON Configured) -->
+<header class="bg-surface docked full-width top-0 sticky border-b border-outline-variant flex justify-between items-center h-16 px-margin-page transition-colors duration-150 z-40">
+<div class="flex items-center gap-6">
+<span class="font-section-heading text-primary">NIRVIK</span>
+<nav class="hidden md:flex gap-4">
+<a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Network Analysis</a>
+<a class="font-body-md text-primary font-bold hover:text-secondary transition-colors" href="#">Case 2026-0142</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">verified_user</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">security</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Page Content -->
+<div class="flex-1 overflow-y-auto p-margin-page">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-gutter">
+<!-- Left Panel: Configuration Interface -->
+<div class="w-full lg:w-1/3 flex flex-col gap-gutter">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-panel-padding shadow-sm">
+<h2 class="font-section-heading text-on-surface mb-4 border-b border-outline-variant pb-2">Report Configuration</h2>
+<div class="space-y-4">
+<div>
+<label class="font-label-caps text-on-surface-variant uppercase tracking-wider block mb-2">Case Reference</label>
+<div class="px-3 py-2 bg-surface-container border border-outline-variant rounded font-body-sm text-on-surface cursor-not-allowed flex items-center justify-between">
+<span>Case 2026-0142 (Operation Silk Road)</span>
+<span class="material-symbols-outlined text-outline text-[16px]">lock</span>
+</div>
+</div>
+<div>
+<label class="font-label-caps text-on-surface-variant uppercase tracking-wider block mb-2">Classification Level</label>
+<select class="w-full px-3 py-2 bg-surface-container-lowest border border-outline-variant rounded font-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors">
+<option>RESTRICTED</option>
+<option selected="">CONFIDENTIAL</option>
+<option>SECRET</option>
+<option>TOP SECRET</option>
+</select>
+</div>
+<div>
+<label class="font-label-caps text-on-surface-variant uppercase tracking-wider block mb-2">Include Sections</label>
+<div class="space-y-2 font-body-sm">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-outline-variant text-secondary-container focus:ring-secondary-container bg-surface-container-lowest" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">Executive Summary</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-outline-variant text-secondary-container focus:ring-secondary-container bg-surface-container-lowest" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">Network Overview</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-outline-variant text-secondary-container focus:ring-secondary-container bg-surface-container-lowest" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">Key Entities Identified</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-outline-variant text-secondary-container focus:ring-secondary-container bg-surface-container-lowest" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">Financial Intelligence (FININT)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-outline-variant text-secondary-container focus:ring-secondary-container bg-surface-container-lowest" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">Communications Intercepts</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-outline-variant text-secondary-container focus:ring-secondary-container bg-surface-container-lowest" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">Audit Trail Metadata</span>
+</label>
+</div>
+</div>
+<div>
+<label class="font-label-caps text-on-surface-variant uppercase tracking-wider block mb-2">Export Format</label>
+<div class="flex gap-2">
+<button class="flex-1 py-2 border-2 border-secondary-container text-secondary-container font-body-sm font-medium rounded hover:bg-secondary-container/10 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span> PDF
+                                    </button>
+<button class="flex-1 py-2 border border-outline-variant text-on-surface-variant font-body-sm rounded hover:bg-surface-container transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">dataset</span> CSV
+                                    </button>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-4 border-t border-outline-variant">
+<button class="w-full bg-secondary-container text-on-secondary font-section-heading py-3 rounded flex items-center justify-center gap-2 hover:bg-secondary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">lock_person</span>
+                                Generate Secure Report
+                            </button>
+<p class="font-metadata text-on-surface-variant text-center mt-2">Action will be logged in system audit.</p>
+</div>
+</div>
+</div>
+<!-- Right Panel: Report Preview -->
+<div class="w-full lg:w-2/3">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-sm min-h-[800px] flex flex-col relative overflow-hidden">
+<!-- Document Header -->
+<div class="border-b-4 border-primary p-8 bg-surface">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h2 class="font-page-title text-primary tracking-tight">NIRVIK INTELLIGENCE REPORT</h2>
+<div class="font-metadata text-on-surface-variant mt-1 flex items-center gap-4">
+<span>Generated: 2023-10-27 14:32Z</span>
+<span>Operator: R. Kumar (ID: 8842)</span>
+</div>
+</div>
+<div class="text-right">
+<div class="inline-block px-3 py-1 bg-error-container text-on-error-container font-label-caps uppercase rounded border border-error-container mb-2">
+                                        CONFIDENTIAL / AUTHORIZED EYES ONLY
+                                    </div>
+<div class="font-section-heading text-on-surface">CASE 2026-0142</div>
+<div class="font-body-sm text-on-surface-variant">Op Silk Road</div>
+</div>
+</div>
+</div>
+<!-- Document Body -->
+<div class="p-8 flex-1 flex flex-col gap-8 bg-white">
+<!-- Executive Summary -->
+<section>
+<h3 class="font-label-caps text-primary border-b border-outline-variant pb-1 mb-3">1.0 Executive Summary</h3>
+<p class="font-body-sm text-on-surface leading-relaxed text-justify">
+                                    Analysis of intercepted communications and financial transactions between Q3 2025 and Q1 2026 indicates a highly structured, transnational narcotics distribution network operating across Southeast Asia. The network utilizes layered shell companies and cryptocurrency tumbling services to obfuscate illicit fund flows. Primary nexus identified in Singapore, with secondary logistical hubs in Bangkok and Manila.
+                                </p>
+</section>
+<!-- Network Overview (Bento style grid) -->
+<section>
+<h3 class="font-label-caps text-primary border-b border-outline-variant pb-1 mb-3">2.0 Network Topology Snapshot</h3>
+<div class="grid grid-cols-3 gap-4 mb-4">
+<div class="bg-surface-container p-3 rounded border border-outline-variant">
+<div class="font-metadata text-on-surface-variant uppercase mb-1">Total Nodes</div>
+<div class="font-section-heading text-primary">1,482</div>
+</div>
+<div class="bg-surface-container p-3 rounded border border-outline-variant">
+<div class="font-metadata text-on-surface-variant uppercase mb-1">Identified Entities</div>
+<div class="font-section-heading text-primary">347</div>
+</div>
+<div class="bg-surface-container p-3 rounded border border-secondary-container">
+<div class="font-metadata text-on-surface-variant uppercase mb-1">High-Risk Targets</div>
+<div class="font-section-heading text-secondary-container flex items-center gap-2">
+                                            12 <span class="material-symbols-outlined text-[16px]">warning</span>
+</div>
+</div>
+</div>
+<!-- Visualization Placeholder -->
+<div class="w-full h-64 bg-tertiary rounded border border-outline-variant relative overflow-hidden flex items-center justify-center" data-alt="A highly detailed, futuristic network graph visualization on a dark navy background. Glowing orange and light blue nodes are interconnected by fine web-like lines, representing complex criminal linkages in a high-tech intelligence analysis software. Corporate modern aesthetic, low contrast outlines, stark data-driven mood." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBUP5GwNIp4DR1By2WWXRmo3EoLihezZRU0A0tyll2s0jClK1a6sudnSwfZXU9UZz9FgQb7IgjAjYLMpVBOsrbHdBctoX8eZMrWd2c3HwqzINQ7dn2WlkAAnTjMgcnGi-8DYJUKHY3xVsxT2hW-VmVXPXr7msJaigLIYI6SjKHJHfoIc9etmAAwXqYz_5XErkiwIaf3RrNylHP7iZ-OAFnfCAUVuLD3rgYe4rQ9xHbxRWOqVeSg0McL')">
+<div class="absolute inset-0 bg-primary/20 pointer-events-none"></div>
+<span class="font-metadata text-on-tertiary/50 absolute bottom-2 right-2">Fig 1. Centralized cluster analysis (Algorithm: Louvain)</span>
+</div>
+</section>
+<!-- Key Entities -->
+<section>
+<h3 class="font-label-caps text-primary border-b border-outline-variant pb-1 mb-3">3.0 Flagged Entities (Top 3)</h3>
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline-variant">
+<th class="font-label-caps text-on-surface-variant py-2 pr-4">Entity ID</th>
+<th class="font-label-caps text-on-surface-variant py-2 pr-4">Type</th>
+<th class="font-label-caps text-on-surface-variant py-2 pr-4">Risk Score</th>
+<th class="font-label-caps text-on-surface-variant py-2">Primary Link</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-on-surface">
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="py-2 pr-4 font-medium">E-9942 (Chen, Wei)</td>
+<td class="py-2 pr-4">Person</td>
+<td class="py-2 pr-4"><span class="px-2 py-0.5 bg-secondary-container/20 text-secondary-container rounded text-xs font-bold">98/100</span></td>
+<td class="py-2">Logistics Coordination</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="py-2 pr-4 font-medium">ORG-712 (Apex Trading Ltd)</td>
+<td class="py-2 pr-4">Company</td>
+<td class="py-2 pr-4"><span class="px-2 py-0.5 bg-secondary-container/20 text-secondary-container rounded text-xs font-bold">92/100</span></td>
+<td class="py-2">Financial Obfuscation</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="py-2 pr-4 font-medium">WAL-Btc44...9qR</td>
+<td class="py-2 pr-4">Crypto Wallet</td>
+<td class="py-2 pr-4"><span class="px-2 py-0.5 bg-secondary-container/20 text-secondary-container rounded text-xs font-bold">87/100</span></td>
+<td class="py-2">Fund Receiving</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+<!-- Document Footer -->
+<div class="mt-auto border-t border-outline-variant p-4 bg-surface-container-lowest flex justify-between items-center text-on-surface-variant">
+<span class="font-metadata">NIRVIK System v4.2.1</span>
+<span class="font-metadata uppercase tracking-widest text-error-container bg-error-container/10 px-2 py-1 rounded">End of Report</span>
+<span class="font-metadata">Page 1 of 1</span>
+</div>
+<!-- Watermark -->
+<div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-5 select-none z-0">
+<span class="text-8xl font-black rotate-[-45deg] tracking-widest uppercase">CONFIDENTIAL</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

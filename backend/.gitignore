@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.installed.cfg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Secrets — NEVER commit
+.env
+*.pem
+*.key
+*.cert
+fabric_certs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+*.coverage
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Models / large files
+models/
+*.bin
+*.safetensors
+*.onnx
+
+# Logs
+logs/
+*.log
+
+# MinIO data
+minio_data/
+
+# MongoDB data
+mongo_data/
+
+# Neo4j data
+neo4j_data/

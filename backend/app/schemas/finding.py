@@ -1,0 +1,193 @@
+"""
+NIRVIK Backend — Remaining API Schemas (Finding, Alert, Evidence, Timeline, Dashboard, etc.)
+"""
+from __future__ import annotations
+
+from datetime import datetime
+from typing import Any, Dict, List, Optional
+
+from pydantic import BaseModel, Field
+
+from app.models.finding import (
+    AlertPriority, AlertStatus, AlertType,
+    FindingStatus, FindingType,
+)
+
+
+# ── Finding ───────────────────────────────────────────────────────────────────
+
+class FindingResponse(BaseModel):
+    id: str
+    case_id: str
+    entity_id: str
+    finding_type: FindingType
+    title: str
+    description: str
+    confidence: float
+    anomaly_score: Optional[float] = None
+    status: FindingStatus
+    evidence_ids: List[str]
+    explanation: Dict[str, Any]
+    evidence_summary: List[Dict[str, Any]]
+    created_at: datetime
+    updated_at: datetime
+    reviewed_by: Optional[str] = None
+    reviewed_at: Optional[datetime] = None
+
+
+class ReviewFindingRequest(BaseModel):
+    status: FindingStatus
+    notes: Optional[str] = None
+
+
+# ── Alert ─────────────────────────────────────────────────────────────────────
+
+class AlertResponse(BaseModel):
+    id: str
+    case_id: str
+    entity_id: Optional[str] = None
+    finding_id: Optional[str] = None
+    alert_type: AlertType
+    priority: AlertPriority
+    title: str
+    description: str
+    status: AlertStatus
+    created_at: datetime
+    updated_at: datetime
+    acknowledged_by: Optional[str] = None
+
+
+class UpdateAlertRequest(BaseModel):
+    status: AlertStatus
+    notes: Optional[str] = None
+
+
+# ── Evidence ──────────────────────────────────────────────────────────────────
+
+class EvidenceResponse(BaseModel):
+    id: str
+    case_id: str
+    document_id: Optional[str] = None
+    filename: str
+    content_type: str
+    size: int
+    sha256: str
+    uploaded_by: str
+    fabric_transaction_id: Optional[str] = None
+    fabric_status: Optional[str] = None
+    created_at: datetime
+
+
+class EvidenceVerifyResponse(BaseModel):
+    evidence_id: str
+    sha256: str
+    verified: bool
+    fabric_status: str
+    proof: Optional[Dict[str, Any]] = None
+
+
+# ── Timeline ──────────────────────────────────────────────────────────────────
+
+class TimelineEvent(BaseModel):
+    id: str
+    event_type: str
+    timestamp: datetime
+    title: str
+    description: str
+    entity_id: Optional[str] = None
+    entity_name: Optional[str] = None
+    case_id: Optional[str] = None
+    confidence: Optional[float] = None
+    metadata: Dict[str, Any] = Field(default_factory=dict)
+
+
+class TimelineResponse(BaseModel):
+    events: List[TimelineEvent]
+    total: int
+    date_from: Optional[str] = None
+    date_to: Optional[str] = None
+
+
+# ── Dashboard ─────────────────────────────────────────────────────────────────
+
+class DashboardStats(BaseModel):
+    active_investigations: int
+    intelligence_signals: int
+    high_priority_alerts: int
+    connected_entities: int
+    total_cases: int
+    new_findings_today: int
+    network_activity_score: float
+
+
+class DashboardResponse(BaseModel):
+    stats: DashboardStats
+    priority_cases: List[Dict[str, Any]]
+    recent_findings: List[Dict[str, Any]]
+    recent_alerts: List[Dict[str, Any]]
+    network_activity: Dict[str, Any]
+
+
+# ── Search ────────────────────────────────────────────────────────────────────
+
+class SearchResultItem(BaseModel):
+    id: str
+    category: str  # PERSON, CASE, etc.
+    name: str
+    description: Optional[str] = None
+    confidence: Optional[float] = None
+    highlight: Optional[str] = None
+
+
+class SearchResponse(BaseModel):
+    query: str
+    total: int
+    results: Dict[str, List[SearchResultItem]]  # keyed by category
+
+
+# ── Report ────────────────────────────────────────────────────────────────────
+
+class GenerateReportRequest(BaseModel):
+    case_id: str
+    include_entities: bool = True
+    include_timeline: bool = True
+    include_findings: bool = True
+    include_network_analytics: bool = True
+    include_evidence: bool = True
+
+
+class ReportResponse(BaseModel):
+    id: str
+    case_id: str
+    case_number: str
+    title: str
+    generated_at: datetime
+    generated_by: str
+    summary: str
+    entities: List[Dict[str, Any]]
+    timeline_summary: Dict[str, Any]
+    findings: List[Dict[str, Any]]
+    alerts: List[Dict[str, Any]]
+    network_analytics: Optional[Dict[str, Any]] = None
+    evidence_references: List[Dict[str, Any]]
+    integrity_note: str
+
+
+# ── Assistant ─────────────────────────────────────────────────────────────────
+
+class AssistantQueryRequest(BaseModel):
+    question: str = Field(..., min_length=5, max_length=500)
+    case_id: Optional[str] = None
+
+
+class AssistantQueryResponse(BaseModel):
+    question: str
+    answer: str
+    evidence_references: List[Dict[str, Any]] = Field(default_factory=list)
+    query_type: str
+    is_read_only: bool = True
+    disclaimer: str = (
+        "This response is generated by an analytical AI assistant for investigative support only. "
+        "It does not constitute a legal determination of guilt, criminality, or liability. "
+        "Human review is required before any action is taken."
+    )
