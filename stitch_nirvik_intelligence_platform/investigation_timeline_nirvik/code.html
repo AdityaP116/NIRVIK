@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Investigation Timeline - NIRVIK</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f5fafa",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#4e616f",
+                        "tertiary": "#182227",
+                        "on-secondary-fixed": "#311300",
+                        "secondary-fixed": "#ffdcc7",
+                        "on-secondary-fixed-variant": "#723600",
+                        "tertiary-fixed": "#dae4eb",
+                        "surface-container-highest": "#dee3e3",
+                        "on-primary-fixed-variant": "#374956",
+                        "tertiary-container": "#2e373d",
+                        "outline-variant": "#c3c7cc",
+                        "on-secondary": "#ffffff",
+                        "outline": "#73777c",
+                        "on-primary-fixed": "#0a1d2a",
+                        "secondary": "#964900",
+                        "primary-fixed-dim": "#b6c9d9",
+                        "secondary-fixed-dim": "#ffb787",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#96a0a7",
+                        "tertiary-fixed-dim": "#bec8cf",
+                        "on-surface": "#171d1d",
+                        "surface-container-low": "#f0f5f4",
+                        "primary-container": "#263845",
+                        "surface-bright": "#f5fafa",
+                        "inverse-primary": "#b6c9d9",
+                        "inverse-surface": "#2c3132",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#d6dbdb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eaefef",
+                        "secondary-container": "#fd974e",
+                        "on-background": "#171d1d",
+                        "on-tertiary-fixed": "#131d22",
+                        "on-surface-variant": "#43474b",
+                        "inverse-on-surface": "#edf2f2",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#8ea1b1",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#d2e5f6",
+                        "primary": "#10232f",
+                        "surface-container-high": "#e4e9e9",
+                        "on-secondary-container": "#6d3300",
+                        "background": "#f5fafa",
+                        "on-tertiary-fixed-variant": "#3e484e",
+                        "surface-variant": "#dee3e3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-page": "24px",
+                        "sidebar-width": "240px",
+                        "stack-tight": "8px",
+                        "panel-padding": "16px",
+                        "stack-md": "12px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "metadata": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "page-title": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "section-heading": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "metadata": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "page-title": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "section-heading": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md h-screen overflow-hidden flex">
+<!-- SideNavBar (Shared Component) -->
+<nav class="bg-primary dark:bg-primary text-secondary-container dark:text-secondary-fixed-dim font-section-heading text-section-heading w-sidebar-width h-screen fixed left-0 top-0 flat no shadows flex flex-col py-panel-padding transition-all duration-200 z-50">
+<div class="px-panel-padding mb-8 flex flex-col gap-2">
+<h1 class="font-page-title text-page-title text-on-primary">NIRVIK</h1>
+<p class="font-metadata text-metadata text-on-primary/70 uppercase tracking-wider">AI-Powered Criminal Network Intelligence</p>
+</div>
+<ul class="flex-1 flex flex-col gap-1 w-full mt-4">
+<li><a class="flex items-center gap-3 px-panel-padding py-3 text-on-primary/70 hover:bg-white/5 transition-colors w-full text-left" href="#"><span class="material-symbols-outlined">dashboard</span>Dashboard</a></li>
+<li><a class="flex items-center gap-3 px-panel-padding py-3 border-l-4 border-secondary-container bg-white/10 text-on-primary font-bold w-full text-left" href="#"><span class="material-symbols-outlined">folder_shared</span>Investigations</a></li>
+<li><a class="flex items-center gap-3 px-panel-padding py-3 text-on-primary/70 hover:bg-white/5 transition-colors w-full text-left" href="#"><span class="material-symbols-outlined">hub</span>Network Analysis</a></li>
+<li><a class="flex items-center gap-3 px-panel-padding py-3 text-on-primary/70 hover:bg-white/5 transition-colors w-full text-left" href="#"><span class="material-symbols-outlined">search_insights</span>Intelligence Search</a></li>
+<li><a class="flex items-center gap-3 px-panel-padding py-3 text-on-primary/70 hover:bg-white/5 transition-colors w-full text-left" href="#"><span class="material-symbols-outlined">notifications_active</span>Alerts</a></li>
+<li><a class="flex items-center gap-3 px-panel-padding py-3 text-on-primary/70 hover:bg-white/5 transition-colors w-full text-left" href="#"><span class="material-symbols-outlined">work</span>Cases</a></li>
+<li><a class="flex items-center gap-3 px-panel-padding py-3 text-on-primary/70 hover:bg-white/5 transition-colors w-full text-left" href="#"><span class="material-symbols-outlined">database</span>Data Sources</a></li>
+<li><a class="flex items-center gap-3 px-panel-padding py-3 text-on-primary/70 hover:bg-white/5 transition-colors w-full text-left" href="#"><span class="material-symbols-outlined">description</span>Reports</a></li>
+<li><a class="flex items-center gap-3 px-panel-padding py-3 text-on-primary/70 hover:bg-white/5 transition-colors w-full text-left" href="#"><span class="material-symbols-outlined">history</span>Audit Trail</a></li>
+</ul>
+<div class="mt-auto px-panel-padding">
+<a class="flex items-center gap-3 py-3 text-on-primary/70 hover:bg-white/10 transition-colors w-full text-left" href="#">
+<span class="material-symbols-outlined">account_circle</span>Rajiv Kumar
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-sidebar-width flex-1 flex flex-col h-screen overflow-hidden">
+<!-- TopAppBar (Shared Component) -->
+<header class="bg-surface dark:bg-surface-container text-primary dark:text-on-surface font-body-md text-body-md docked full-width top-0 sticky border-b border-outline-variant flat no shadows transition-colors duration-150 flex justify-between items-center h-16 px-margin-page z-40">
+<div class="flex items-center gap-8">
+<span class="font-section-heading text-section-heading text-primary font-bold">NIRVIK</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-on-surface-variant hover:text-secondary" href="#">Network Analysis</a>
+<a class="text-primary font-bold" href="#">Case 2026-0142</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative w-64">
+<input class="w-full bg-white border border-outline-variant rounded px-3 py-1.5 focus:border-primary focus:ring-0 focus:outline-none text-body-sm transition-colors" placeholder="Search entity or case..." type="text"/>
+<span class="material-symbols-outlined absolute right-2 top-1.5 text-on-surface-variant text-[20px]">search</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<button class="p-1 hover:text-secondary transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-1 hover:text-secondary transition-colors"><span class="material-symbols-outlined">verified_user</span></button>
+<button class="p-1 hover:text-secondary transition-colors"><span class="material-symbols-outlined">security</span></button>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<div class="flex-1 overflow-y-auto p-margin-page bg-surface-container flex flex-col gap-gutter">
+<!-- Context Header -->
+<div class="flex justify-between items-end pb-4 border-b border-outline-variant">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-primary text-on-primary px-2 py-0.5 rounded-full font-label-caps text-label-caps uppercase tracking-wider">Active Case</span>
+<span class="text-on-surface-variant font-metadata text-metadata">Last updated: 10 mins ago</span>
+</div>
+<h2 class="font-page-title text-page-title text-primary">Investigation Timeline: Operation Shadow</h2>
+</div>
+<div class="flex gap-3">
+<button class="border border-primary text-primary px-4 py-2 rounded font-body-sm font-medium hover:bg-surface-container-highest transition-colors">Export PDF</button>
+<button class="bg-secondary-container text-on-primary px-4 py-2 rounded font-body-sm font-medium hover:opacity-90 transition-opacity">Add Event</button>
+</div>
+</div>
+<!-- Filters & Timeline Area -->
+<div class="flex gap-gutter flex-1">
+<!-- Filter Panel (Left) -->
+<div class="w-64 bg-white border border-tertiary/20 rounded p-panel-padding h-fit sticky top-0 shadow-[0px_4px_12px_rgba(38,56,69,0.08)]">
+<h3 class="font-section-heading text-section-heading text-primary mb-4 border-b border-outline-variant pb-2">Filter Events</h3>
+<div class="flex flex-col gap-3 font-body-sm">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="text-secondary-container border-outline-variant rounded focus:ring-secondary-container" type="checkbox"/>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-secondary-container">psychology</span> AI Findings</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="text-primary border-outline-variant rounded focus:ring-primary" type="checkbox"/>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-on-surface-variant">call</span> Calls (CDR)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="text-primary border-outline-variant rounded focus:ring-primary" type="checkbox"/>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-on-surface-variant">payments</span> Transactions</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="text-primary border-outline-variant rounded focus:ring-primary" type="checkbox"/>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-on-surface-variant">location_on</span> Locations</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="text-primary border-outline-variant rounded focus:ring-primary" type="checkbox"/>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-on-surface-variant">description</span> Reports</span>
+</label>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant">
+<h4 class="font-metadata text-metadata text-on-surface-variant uppercase mb-2">Time Range</h4>
+<select class="w-full bg-surface border border-outline-variant rounded px-2 py-1.5 text-body-sm focus:border-primary focus:ring-0">
+<option>Last 30 Days</option>
+<option>Last 90 Days</option>
+<option>Custom Range</option>
+</select>
+</div>
+</div>
+<!-- Timeline Flow (Right) -->
+<div class="flex-1 bg-white border border-tertiary/20 rounded p-panel-padding relative">
+<!-- Vertical Line -->
+<div class="absolute left-[40px] top-[24px] bottom-[24px] w-px bg-outline-variant"></div>
+<div class="flex flex-col gap-6 relative">
+<!-- Event 1: AI Insight -->
+<div class="flex gap-4 relative z-10">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-white flex items-center justify-center shadow-[0_0_8px_rgba(253,151,78,0.6)] shrink-0 border-2 border-white mt-1">
+<span class="material-symbols-outlined text-[18px]">psychology</span>
+</div>
+<div class="flex-1 bg-surface-container-lowest border-2 border-secondary-container rounded p-4 shadow-[0px_4px_12px_rgba(38,56,69,0.08)]">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="bg-secondary-container text-white px-2 py-0.5 rounded-full font-label-caps text-label-caps uppercase">AI Finding</span>
+<h4 class="font-section-heading text-section-heading text-primary">Cross-Case Relationship Identified</h4>
+</div>
+<span class="text-on-surface-variant font-metadata text-metadata">Oct 24, 2026 - 14:32</span>
+</div>
+<p class="text-body-sm text-on-surface mb-3">AI Pattern Matching detected a 94% correlation between communication patterns in Case 2026-0142 and closed Case 2024-0089. Subject 'Vikram R.' appears to be using previously identified intermediary networks.</p>
+<button class="text-secondary-container text-body-sm font-medium hover:underline flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> View Graph Analysis</button>
+</div>
+</div>
+<!-- Event 2: Transaction -->
+<div class="flex gap-4 relative z-10 group">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center shrink-0 border-2 border-white mt-1 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+<div class="flex-1 bg-surface-container-lowest border border-outline-variant rounded p-4 hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="bg-primary text-white px-2 py-0.5 rounded-full font-label-caps text-label-caps uppercase">Bank Record</span>
+<h4 class="font-section-heading text-section-heading text-primary font-medium">Large Wire Transfer</h4>
+</div>
+<span class="text-on-surface-variant font-metadata text-metadata">Oct 23, 2026 - 09:15</span>
+</div>
+<div class="flex gap-8 text-body-sm text-on-surface">
+<div><span class="text-on-surface-variant block font-metadata">Amount:</span> $45,000 USD</div>
+<div><span class="text-on-surface-variant block font-metadata">Origin:</span> Shell Corp LLC (UAE)</div>
+<div><span class="text-on-surface-variant block font-metadata">Destination:</span> Local Account #8843</div>
+</div>
+</div>
+</div>
+<!-- Event 3: Location -->
+<div class="flex gap-4 relative z-10 group">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center shrink-0 border-2 border-white mt-1 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+</div>
+<div class="flex-1 bg-surface-container-lowest border border-outline-variant rounded p-4 hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="bg-primary text-white px-2 py-0.5 rounded-full font-label-caps text-label-caps uppercase">Surveillance</span>
+<h4 class="font-section-heading text-section-heading text-primary font-medium">Subject Sighted at Warehouse</h4>
+</div>
+<span class="text-on-surface-variant font-metadata text-metadata">Oct 21, 2026 - 22:45</span>
+</div>
+<p class="text-body-sm text-on-surface">Field agents reported visual confirmation of primary suspect entering the abandoned warehouse facility in Sector 4. Subject remained on premises for approx 45 minutes.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

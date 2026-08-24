@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NIRVIK - Intelligence Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#f5fafa",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#4e616f",
+                        "tertiary": "#182227",
+                        "on-secondary-fixed": "#311300",
+                        "secondary-fixed": "#ffdcc7",
+                        "on-secondary-fixed-variant": "#723600",
+                        "tertiary-fixed": "#dae4eb",
+                        "surface-container-highest": "#dee3e3",
+                        "on-primary-fixed-variant": "#374956",
+                        "tertiary-container": "#2e373d",
+                        "outline-variant": "#c3c7cc",
+                        "on-secondary": "#ffffff",
+                        "outline": "#73777c",
+                        "on-primary-fixed": "#0a1d2a",
+                        "secondary": "#964900",
+                        "primary-fixed-dim": "#b6c9d9",
+                        "secondary-fixed-dim": "#ffb787",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#96a0a7",
+                        "tertiary-fixed-dim": "#bec8cf",
+                        "on-surface": "#171d1d",
+                        "surface-container-low": "#f0f5f4",
+                        "primary-container": "#263845",
+                        "surface-bright": "#f5fafa",
+                        "inverse-primary": "#b6c9d9",
+                        "inverse-surface": "#2c3132",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#d6dbdb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eaefef",
+                        "secondary-container": "#fd974e",
+                        "on-background": "#171d1d",
+                        "on-tertiary-fixed": "#131d22",
+                        "on-surface-variant": "#43474b",
+                        "inverse-on-surface": "#edf2f2",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#8ea1b1",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#d2e5f6",
+                        "primary": "#10232f",
+                        "surface-container-high": "#e4e9e9",
+                        "on-secondary-container": "#6d3300",
+                        "background": "#f5fafa",
+                        "on-tertiary-fixed-variant": "#3e484e",
+                        "surface-variant": "#dee3e3"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "margin-page": "24px",
+                        "sidebar-width": "240px",
+                        "stack-tight": "8px",
+                        "panel-padding": "16px",
+                        "stack-md": "12px",
+                        "gutter": "16px"
+                    },
+                    fontFamily: {
+                        "metadata": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "page-title": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "section-heading": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    fontSize: {
+                        "metadata": ["11px", { lineHeight: "14px", letterSpacing: "0.02em", fontWeight: "500" }],
+                        "body-sm": ["13px", { lineHeight: "18px", fontWeight: "400" }],
+                        "page-title": ["26px", { lineHeight: "32px", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        "label-caps": ["10px", { lineHeight: "12px", letterSpacing: "0.05em", fontWeight: "700" }],
+                        "section-heading": ["18px", { lineHeight: "24px", fontWeight: "600" }],
+                        "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .icon-fill { font-variation-settings: 'FILL' 1; }
+        
+        /* Scrollbar styling for a cleaner look */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background-color: #dee3e3; border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background-color: #c3c7cc; }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased flex">
+<!-- SideNavBar (Shared Component) -->
+<nav class="w-sidebar-width h-screen fixed left-0 top-0 bg-primary dark:bg-primary flex flex-col py-panel-padding transition-all duration-200 z-50">
+<!-- Header -->
+<div class="px-panel-padding mb-8 flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary icon-fill text-[20px]">policy</span>
+</div>
+<h1 class="font-page-title text-page-title text-on-primary">NIRVIK</h1>
+</div>
+<p class="font-metadata text-metadata text-on-primary-container uppercase tracking-wider">AI-Powered Criminal Network Intelligence</p>
+</div>
+<!-- Navigation Tabs -->
+<div class="flex-1 overflow-y-auto px-2 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-md text-body-md text-on-primary/70 hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-primary transition-colors" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-md text-body-md text-on-primary/70 hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-primary transition-colors" data-icon="folder_shared">folder_shared</span>
+<span>Investigations</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-md text-body-md text-on-primary/70 hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-primary transition-colors" data-icon="hub">hub</span>
+<span>Network Analysis</span>
+</a>
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-3 py-2 border-l-4 border-secondary-container bg-white/10 text-on-primary font-bold font-body-md text-body-md transition-colors rounded-r" href="#">
+<span class="material-symbols-outlined text-[20px] icon-fill text-secondary-container" data-icon="search_insights">search_insights</span>
+<span>Intelligence Search</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-md text-body-md text-on-primary/70 hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-primary transition-colors" data-icon="notifications_active">notifications_active</span>
+<span>Alerts</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-md text-body-md text-on-primary/70 hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-primary transition-colors" data-icon="work">work</span>
+<span>Cases</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-md text-body-md text-on-primary/70 hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-primary transition-colors" data-icon="database">database</span>
+<span>Data Sources</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-md text-body-md text-on-primary/70 hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-primary transition-colors" data-icon="description">description</span>
+<span>Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-md text-body-md text-on-primary/70 hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-primary transition-colors" data-icon="history">history</span>
+<span>Audit Trail</span>
+</a>
+</div>
+<!-- Footer -->
+<div class="px-2 mt-4 pt-4 border-t border-white/10">
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-md text-body-md text-on-primary/70 hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-primary transition-colors" data-icon="account_circle">account_circle</span>
+<span>Rajiv Kumar</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-sidebar-width flex-1 flex flex-col min-h-screen">
+<!-- TopAppBar (Shared Component) -->
+<header class="flex justify-between items-center h-16 px-margin-page bg-surface dark:bg-surface-container sticky top-0 z-40 border-b border-outline-variant transition-colors duration-150">
+<!-- Breadcrumb / Context Navigation (Empty in JSON schema context, but structurally supported) -->
+<div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md">
+<span class="hover:text-secondary cursor-pointer transition-colors">Intelligence Search</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary font-bold">Global Query</span>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-secondary transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-secondary-container rounded-full border border-surface"></span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</button>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-margin-page flex-1 flex flex-col gap-gutter max-w-[1600px] w-full mx-auto">
+<!-- Search Module -->
+<section class="bg-surface-container-lowest border border-tertiary-fixed-dim rounded shadow-sm flex flex-col">
+<!-- Search Input Area -->
+<div class="p-panel-padding border-b border-surface-container-high flex items-center gap-4 relative">
+<span class="material-symbols-outlined text-[28px] text-primary" data-icon="search">search</span>
+<input class="flex-1 bg-transparent border-none outline-none font-section-heading text-section-heading text-primary placeholder:text-on-tertiary-container focus:ring-0 px-0" placeholder="Search entities, phone numbers, or enter natural language queries..." type="text" value="Ramesh Kumar"/>
+<!-- AI Badge inside search -->
+<div class="flex items-center gap-1.5 px-2 py-1 bg-primary/5 rounded border border-primary/10">
+<span class="material-symbols-outlined text-[14px] text-secondary-container icon-fill">auto_awesome</span>
+<span class="font-label-caps text-label-caps text-primary uppercase">NLP Active</span>
+</div>
+</div>
+<!-- Query Examples & Filters -->
+<div class="p-panel-padding bg-surface-container-low flex items-center justify-between gap-4 rounded-b">
+<div class="flex items-center gap-3 overflow-x-auto hide-scrollbar">
+<span class="font-metadata text-metadata text-on-surface-variant uppercase whitespace-nowrap">Examples:</span>
+<button class="px-3 py-1.5 rounded-full border border-tertiary-fixed-dim bg-surface-container-lowest font-body-sm text-body-sm text-on-surface hover:border-primary transition-colors whitespace-nowrap">
+                            Show connections between Ramesh Kumar and Case 2025-0891
+                        </button>
+<button class="px-3 py-1.5 rounded-full border border-tertiary-fixed-dim bg-surface-container-lowest font-body-sm text-body-sm text-on-surface hover:border-primary transition-colors whitespace-nowrap">
+                            Find all active phones linked to 'The Syndicate'
+                        </button>
+</div>
+<div class="flex items-center gap-2 border-l border-outline-variant pl-4">
+<button class="flex items-center gap-2 px-3 py-1.5 bg-primary text-on-primary rounded hover:bg-primary-container transition-colors font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+                            Filters
+                        </button>
+</div>
+</div>
+</section>
+<!-- Results Layout (Split Pane) -->
+<section class="flex flex-1 gap-gutter min-h-0">
+<!-- Left Column: Results List -->
+<div class="flex-1 flex flex-col gap-4 overflow-hidden">
+<!-- Result Categories/Tabs -->
+<div class="flex items-center gap-1 border-b border-outline-variant">
+<button class="px-4 py-2 border-b-2 border-secondary-container text-primary font-metadata text-metadata uppercase tracking-wider font-bold">All (142)</button>
+<button class="px-4 py-2 border-b-2 border-transparent text-on-surface-variant hover:text-primary transition-colors font-metadata text-metadata uppercase tracking-wider">People (24)</button>
+<button class="px-4 py-2 border-b-2 border-transparent text-on-surface-variant hover:text-primary transition-colors font-metadata text-metadata uppercase tracking-wider">Phones (58)</button>
+<button class="px-4 py-2 border-b-2 border-transparent text-on-surface-variant hover:text-primary transition-colors font-metadata text-metadata uppercase tracking-wider">Cases (12)</button>
+<button class="px-4 py-2 border-b-2 border-transparent text-on-surface-variant hover:text-primary transition-colors font-metadata text-metadata uppercase tracking-wider">Locations (45)</button>
+<button class="px-4 py-2 border-b-2 border-transparent text-on-surface-variant hover:text-primary transition-colors font-metadata text-metadata uppercase tracking-wider">Orgs (3)</button>
+</div>
+<!-- Results Scrollable Area -->
+<div class="flex-1 overflow-y-auto pr-2 flex flex-col gap-stack-tight">
+<!-- Selected Result Card (Active State) -->
+<div class="bg-surface-container-lowest border-2 border-secondary-container rounded p-panel-padding cursor-pointer flex gap-4 relative shadow-[0px_4px_12px_rgba(38,56,69,0.08)]">
+<div class="w-12 h-12 rounded bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[24px]">person</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-section-heading text-section-heading text-primary">Ramesh Kumar</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Primary Target · AKA "RK"</p>
+</div>
+<!-- High Confidence Intelligence Chip -->
+<div class="px-2 py-1 rounded bg-secondary-container text-on-primary font-label-caps text-label-caps uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] icon-fill">verified</span>
+                                        98% Match
+                                    </div>
+</div>
+<div class="flex items-center gap-6 mt-3 font-metadata text-metadata text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">source</span> 12 Sources
+                                    </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">work</span> Case 2025-0891
+                                    </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">update</span> Active Today
+                                    </div>
+</div>
+</div>
+</div>
+<!-- Standard Result Card 1 (Phone) -->
+<div class="bg-surface-container-lowest border border-tertiary-fixed-dim rounded p-panel-padding cursor-pointer hover:bg-surface-container-low hover:border-outline-variant transition-all flex gap-4">
+<div class="w-12 h-12 rounded bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[24px]">smartphone</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-section-heading text-section-heading text-primary">+91 98765 43210</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Prepaid Mobile · Linked to Target</p>
+</div>
+<!-- Standard Confidence Chip -->
+<div class="px-2 py-1 rounded bg-primary text-on-primary font-label-caps text-label-caps uppercase flex items-center gap-1">
+                                        75% Match
+                                    </div>
+</div>
+<div class="flex items-center gap-6 mt-3 font-metadata text-metadata text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">source</span> 4 Sources
+                                    </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">work</span> Multiple Cases
+                                    </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">update</span> 2 days ago
+                                    </div>
+</div>
+</div>
+</div>
+<!-- Standard Result Card 2 (Location) -->
+<div class="bg-surface-container-lowest border border-tertiary-fixed-dim rounded p-panel-padding cursor-pointer hover:bg-surface-container-low hover:border-outline-variant transition-all flex gap-4">
+<div class="w-12 h-12 rounded bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[24px]">location_on</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-section-heading text-section-heading text-primary">Warehouse 42, Port District</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Commercial Property · Suspected Safehouse</p>
+</div>
+<div class="px-2 py-1 rounded bg-primary text-on-primary font-label-caps text-label-caps uppercase flex items-center gap-1">
+                                        60% Match
+                                    </div>
+</div>
+<div class="flex items-center gap-6 mt-3 font-metadata text-metadata text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">source</span> 2 Sources
+                                    </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">work</span> Case 2025-0891
+                                    </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">update</span> 1 week ago
+                                    </div>
+</div>
+</div>
+</div>
+<!-- Standard Result Card 3 (Organization) -->
+<div class="bg-surface-container-lowest border border-tertiary-fixed-dim rounded p-panel-padding cursor-pointer hover:bg-surface-container-low hover:border-outline-variant transition-all flex gap-4">
+<div class="w-12 h-12 rounded bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[24px]">business</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-section-heading text-section-heading text-primary">Global Logistics Pvt Ltd</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Shell Company</p>
+</div>
+<div class="px-2 py-1 rounded bg-secondary-container text-on-primary font-label-caps text-label-caps uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] icon-fill">warning</span>
+                                        Flagged
+                                    </div>
+</div>
+<div class="flex items-center gap-6 mt-3 font-metadata text-metadata text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">source</span> 8 Sources
+                                    </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">work</span> Pending investigation
+                                    </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">update</span> Active
+                                    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Inspector / Preview Panel (Fixed Width) -->
+<aside class="w-[420px] bg-surface-container-lowest border border-tertiary-fixed-dim rounded flex flex-col shadow-sm shrink-0 h-full overflow-hidden">
+<!-- Preview Header -->
+<div class="p-panel-padding border-b border-surface-container-high bg-surface flex flex-col gap-4 relative overflow-hidden">
+<!-- Abstract AI Pattern background hint -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary-container opacity-5 rounded-bl-full pointer-events-none"></div>
+<div class="flex items-start justify-between relative z-10">
+<div class="w-16 h-16 rounded bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[32px]">person</span>
+</div>
+<div class="flex gap-2">
+<button class="p-1.5 rounded hover:bg-surface-container-highest transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">bookmark_add</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container-highest transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button class="p-1.5 rounded bg-secondary-container text-on-primary hover:bg-secondary transition-colors font-body-sm font-medium px-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">hub</span> Open Graph
+                                </button>
+</div>
+</div>
+<div class="relative z-10">
+<h2 class="font-page-title text-page-title text-primary">Ramesh Kumar</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Person of Interest · Primary Target</p>
+<div class="flex flex-wrap gap-2 mt-3">
+<span class="px-2.5 py-1 bg-secondary-container/10 border border-secondary-container/30 text-secondary-fixed-dim rounded-full font-label-caps text-label-caps uppercase">High Flight Risk</span>
+<span class="px-2.5 py-1 bg-surface-container-highest border border-outline-variant text-on-surface-variant rounded-full font-label-caps text-label-caps uppercase">Smuggling</span>
+<span class="px-2.5 py-1 bg-surface-container-highest border border-outline-variant text-on-surface-variant rounded-full font-label-caps text-label-caps uppercase">Financial Fraud</span>
+</div>
+</div>
+</div>
+<!-- Preview Content Scrollable -->
+<div class="flex-1 overflow-y-auto p-panel-padding flex flex-col gap-6">
+<!-- Entity Attributes -->
+<div class="flex flex-col gap-3">
+<h4 class="font-metadata text-metadata text-on-surface-variant uppercase tracking-wider font-bold">Key Attributes</h4>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2">
+<div>
+<p class="font-metadata text-metadata text-on-tertiary-container">Known Aliases</p>
+<p class="font-body-sm text-body-sm text-primary font-medium mt-0.5">RK, Ramesh K, 'The Boss'</p>
+</div>
+<div>
+<p class="font-metadata text-metadata text-on-tertiary-container">Nationality</p>
+<p class="font-body-sm text-body-sm text-primary font-medium mt-0.5">Indian</p>
+</div>
+<div>
+<p class="font-metadata text-metadata text-on-tertiary-container">Last Known Location</p>
+<p class="font-body-sm text-body-sm text-primary font-medium mt-0.5">Warehouse 42, Port District</p>
+</div>
+<div>
+<p class="font-metadata text-metadata text-on-tertiary-container">Status</p>
+<div class="flex items-center gap-1 text-secondary-container mt-0.5">
+<span class="material-symbols-outlined text-[14px] icon-fill">radio_button_checked</span>
+<p class="font-body-sm text-body-sm font-medium">Active Surveillance</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Connected Entities (Mini Graph equivalent) -->
+<div class="flex flex-col gap-3 pt-4 border-t border-surface-container-highest">
+<div class="flex items-center justify-between">
+<h4 class="font-metadata text-metadata text-on-surface-variant uppercase tracking-wider font-bold">Direct Connections (AI Synthesized)</h4>
+<span class="font-metadata text-metadata text-secondary-container font-medium cursor-pointer hover:underline">View All</span>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Connection Item -->
+<div class="flex items-center justify-between p-2 rounded bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer border border-transparent hover:border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-primary">smartphone</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm font-medium text-primary">+91 98765 43210</p>
+<p class="font-metadata text-metadata text-on-surface-variant">Frequent Contact (42 calls)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span>
+</div>
+<!-- Connection Item -->
+<div class="flex items-center justify-between p-2 rounded bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer border border-transparent hover:border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-primary">business</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm font-medium text-primary">Global Logistics Pvt Ltd</p>
+<p class="font-metadata text-metadata text-on-surface-variant">Registered Director</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span>
+</div>
+<!-- Connection Item -->
+<div class="flex items-center justify-between p-2 rounded bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer border border-transparent hover:border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-primary">person</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm font-medium text-primary">Suresh Gupta</p>
+<p class="font-metadata text-metadata text-on-surface-variant">Co-accused (Case 2024-1102)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Recent Activity Timeline -->
+<div class="flex flex-col gap-3 pt-4 border-t border-surface-container-highest">
+<h4 class="font-metadata text-metadata text-on-surface-variant uppercase tracking-wider font-bold">Recent Intelligence</h4>
+<div class="flex flex-col gap-4 relative before:absolute before:inset-y-0 before:left-3 before:w-px before:bg-outline-variant ml-1 mt-2">
+<!-- Timeline Item -->
+<div class="flex gap-4 relative z-10">
+<div class="w-6 h-6 rounded-full bg-surface-container-lowest border-2 border-secondary-container flex items-center justify-center shrink-0 mt-0.5">
+<div class="w-2 h-2 rounded-full bg-secondary-container"></div>
+</div>
+<div>
+<p class="font-body-sm text-body-sm font-medium text-primary">Communication Intercepted</p>
+<p class="font-metadata text-metadata text-on-surface-variant mt-0.5">Call to +91 98765 43210 discussing 'shipment'.</p>
+<p class="font-metadata text-metadata text-on-tertiary-container mt-1">Today, 14:32</p>
+</div>
+</div>
+<!-- Timeline Item -->
+<div class="flex gap-4 relative z-10">
+<div class="w-6 h-6 rounded-full bg-surface-container-lowest border-2 border-outline-variant flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[12px] text-outline">flight_takeoff</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm font-medium text-primary">Travel Alert</p>
+<p class="font-metadata text-metadata text-on-surface-variant mt-0.5">Booked one-way ticket to Dubai.</p>
+<p class="font-metadata text-metadata text-on-tertiary-container mt-1">Yesterday, 09:15</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</section>
+</div>
+</main>
+</body></html>
