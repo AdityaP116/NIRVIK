@@ -75,7 +75,7 @@ services:
       - "6379:6379"
 
   minio:
-    image: minio/minio:RELEASE.2024-11-07T00-52-14Z
+    image: minio/minio:latest
     restart: unless-stopped
     ports:
       - "9000:9000"
