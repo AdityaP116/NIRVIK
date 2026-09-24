@@ -1,0 +1,4 @@
+NIRVIK Intelligence Platform - Sample Field Investigation Report
+Case Ref: CASE-2026-0142
+Subject: Organized Communications Burst and Financial Anomaly Analysis
+Summary: Multi-source correlation detected abnormal high-frequency CDR bursts between node PER_001 and PER_012 followed by rapid high-value transactions.

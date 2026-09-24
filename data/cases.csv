@@ -1,0 +1,16 @@
+case_number,title,jurisdiction,status,priority,assigned_to,created_by
+CASE-2026-0142,Organized Financial Network,Central Economic Intelligence Bureau,ACTIVE,HIGH,OFFICER_001,OFFICER_001
+CASE-2026-0143,Synthetic Intelligence Operation 1,State Crime Branch,UNDER_REVIEW,MEDIUM,OFFICER_001,OFFICER_001
+CASE-2026-0144,Synthetic Intelligence Operation 2,State Crime Branch,ACTIVE,MEDIUM,OFFICER_002,OFFICER_001
+CASE-2026-0145,Synthetic Intelligence Operation 3,State Crime Branch,UNDER_REVIEW,MEDIUM,OFFICER_003,OFFICER_001
+CASE-2026-0146,Synthetic Intelligence Operation 4,State Crime Branch,ACTIVE,MEDIUM,OFFICER_004,OFFICER_001
+CASE-2026-0147,Synthetic Intelligence Operation 5,State Crime Branch,UNDER_REVIEW,MEDIUM,OFFICER_005,OFFICER_001
+CASE-2026-0148,Synthetic Intelligence Operation 6,State Crime Branch,ACTIVE,MEDIUM,OFFICER_006,OFFICER_001
+CASE-2026-0149,Synthetic Intelligence Operation 7,State Crime Branch,UNDER_REVIEW,MEDIUM,OFFICER_007,OFFICER_001
+CASE-2026-0150,Synthetic Intelligence Operation 8,State Crime Branch,ACTIVE,MEDIUM,OFFICER_008,OFFICER_001
+CASE-2026-0151,Synthetic Intelligence Operation 9,State Crime Branch,UNDER_REVIEW,MEDIUM,OFFICER_009,OFFICER_001
+CASE-2026-0152,Synthetic Intelligence Operation 10,State Crime Branch,ACTIVE,MEDIUM,OFFICER_010,OFFICER_001
+CASE-2026-0153,Synthetic Intelligence Operation 11,State Crime Branch,UNDER_REVIEW,MEDIUM,OFFICER_011,OFFICER_001
+CASE-2026-0154,Synthetic Intelligence Operation 12,State Crime Branch,ACTIVE,MEDIUM,OFFICER_012,OFFICER_001
+CASE-2026-0155,Synthetic Intelligence Operation 13,State Crime Branch,UNDER_REVIEW,MEDIUM,OFFICER_013,OFFICER_001
+CASE-2026-0156,Synthetic Intelligence Operation 14,State Crime Branch,ACTIVE,MEDIUM,OFFICER_014,OFFICER_001

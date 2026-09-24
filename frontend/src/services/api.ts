@@ -118,4 +118,9 @@ export async function apiRequest<T>(endpoint: string, options: RequestOptions = 
   }
 }
 
+export async function getCaseNetwork(caseId: string): Promise<any> {
+  return apiRequest(`/network/${caseId}`);
+}
+
 export { USE_MOCK_DATA };
+
